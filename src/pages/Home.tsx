@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { 
   Clock, CreditCard, RefreshCw, ShieldCheck,
   Video, UserCheck, PlayCircle,
-  Play, Volume2, Search, Pin
+  Play, Volume2, Search, Pin, ChevronRight
 } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useLanguage } from '../context/LanguageContext';
@@ -33,7 +33,7 @@ const Home: React.FC = () => {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-content reveal">
-            <div className="section-tag">{t('Mạng lưới giáo dục Koko', 'Koko Education Network')}</div>
+            <div className="section-tag">{t('Koko Education Network', 'Koko Education Network')}</div>
             <h1 className="hero-title">
               {t('Chinh phục', 'Conquer')} <span>{t('Hàn Quốc', 'Korea')}</span> <br/>
               {t('Khởi đầu tương lai', 'Start Your Future')}
@@ -75,30 +75,30 @@ const Home: React.FC = () => {
 
       {/* 3. ABOUT US PROMO */}
       <section id="about" className="section reveal">
-        <div className="container" style={{background: 'var(--koko-red-light)', padding: '80px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)'}}>
+        <div className="container about-container-box">
           <div className="rules-grid">
-            <div style={{paddingRight: '40px'}} className="about-text-mobile">
+            <div className="about-text-content">
               <div className="section-tag">{t('Về KokoEdu', 'About KokoEdu')}</div>
-              <h2 style={{fontSize: '40px', fontWeight: '800', marginBottom: '24px'}}>{t('Hơn cả một Trung tâm,', 'More Than a Center,')} <br/> {t('Chúng tôi là', 'We are')} <span style={{color: 'var(--koko-red)'}}>{t('Gia đình', 'Family')}</span></h2>
-              <p style={{color: 'var(--text-muted)', fontSize: '18px', lineHeight: '1.8', marginBottom: '32px'}}>
+              <h2 className="about-title">{t('Hơn cả một Trung tâm,', 'More Than a Center,')} <br/> {t('Chúng tôi là', 'We are')} <span style={{color: 'var(--koko-red)'}}>{t('Gia đình', 'Family')}</span></h2>
+              <p className="about-lead">
                 {t(
                   'Tại KokoEdu, chúng tôi tin rằng du học không chỉ là thay đổi một ngôi trường, mà là kiến tạo một tương lai mới. Với hơn 10 năm kinh nghiệm, chúng tôi tự hào là đơn vị tiên phong ứng dụng công nghệ giáo dục hiện đại vào đào tạo tiếng Hàn.',
                   'At KokoEdu, we believe that studying abroad is not just about changing schools, but about creating a new future. With over 10 years of experience, we are proud to be pioneers in applying modern educational technology to Korean language training.'
                 )}
               </p>
-              <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
-                <div>
-                  <h4 style={{color: 'var(--text-main)', marginBottom: '8px', fontWeight: '800'}}>{t('Sứ mệnh', 'Mission')}</h4>
-                  <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Xây dựng cầu nối vững chắc giúp học sinh Việt Nam tiếp cận tinh hoa giáo dục Hàn Quốc.', 'Building a solid bridge to help Vietnamese students access the essence of Korean education.')}</p>
+              <div className="mission-vision-grid">
+                <div className="mv-item">
+                  <h4>{t('Sứ mệnh', 'Mission')}</h4>
+                  <p>{t('Xây dựng cầu nối vững chắc giúp học sinh Việt Nam tiếp cận tinh hoa giáo dục Hàn Quốc.', 'Building a solid bridge to help Vietnamese students access the essence of Korean education.')}</p>
                 </div>
-                <div>
-                  <h4 style={{color: 'var(--text-main)', marginBottom: '8px', fontWeight: '800'}}>{t('Tầm nhìn', 'Vision')}</h4>
-                  <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Trở thành biểu tượng của sự uy tín và tận tâm trong lĩnh vực du học quốc tế.', 'Becoming a symbol of prestige and dedication in the field of international study abroad.')}</p>
+                <div className="mv-item">
+                  <h4>{t('Tầm nhìn', 'Vision')}</h4>
+                  <p>{t('Trở thành biểu tượng của sự uy tín và tận tâm trong lĩnh vực du học quốc tế.', 'Becoming a symbol of prestige and dedication in the field of international study abroad.')}</p>
                 </div>
               </div>
             </div>
-            <div className="fancy-card" style={{border: 'none'}}>
-              <h3 style={{fontSize: '24px', fontWeight: '800', marginBottom: '24px', color: 'var(--koko-red)'}}>{t('Vì sao chọn Koko?', 'Why Choose Koko?')}</h3>
+            <div className="fancy-card why-koko-card">
+              <h3 className="card-title-red">{t('Vì sao chọn Koko?', 'Why Choose Koko?')}</h3>
               <ul className="rules-list">
                 <li>{t('Lộ trình cá nhân hóa cho từng trình độ.', 'Personalized learning paths for each level.')}</li>
                 <li>{t('Đội ngũ giáo viên bản ngữ & chuyên gia giàu kinh nghiệm.', 'Native teachers & experienced experts.')}</li>
@@ -120,7 +120,7 @@ const Home: React.FC = () => {
 
           <div className="rules-grid">
             <div className="fancy-card reveal">
-              <h3 style={{fontSize: '24px', fontWeight: '800', marginBottom: '30px', display: 'flex', gap: '12px', alignItems: 'center'}}>
+              <h3 className="card-title-icon">
                 <ShieldCheck className="red-icon" /> {t('Nội quy khóa học', 'Course Rules')}
               </h3>
               <ul className="rules-list">
@@ -134,23 +134,23 @@ const Home: React.FC = () => {
             <div className="commitment-stack reveal">
               <div className="c-item-fancy">
                 <div className="c-icon-wrap"><Clock size={24} /></div>
-                <div>
-                  <h4 style={{fontWeight: '800', marginBottom: '4px'}}>{t('Vào học đúng giờ', 'Be on time')}</h4>
-                  <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Đảm bảo chất lượng dạy và học tốt nhất.', 'Ensure the best teaching and learning quality.')}</p>
+                <div className="c-text">
+                  <h4>{t('Vào học đúng giờ', 'Be on time')}</h4>
+                  <p>{t('Đảm bảo chất lượng dạy và học tốt nhất.', 'Ensure the best teaching and learning quality.')}</p>
                 </div>
               </div>
               <div className="c-item-fancy">
                 <div className="c-icon-wrap"><CreditCard size={24} /></div>
-                <div>
-                  <h4 style={{fontWeight: '800', marginBottom: '4px'}}>{t('Chính sách hoàn phí', 'Refund Policy')}</h4>
-                  <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Không hoàn phí trong trường hợp nghỉ ngang.', 'No refund in case of dropping out.')}</p>
+                <div className="c-text">
+                  <h4>{t('Chính sách hoàn phí', 'Refund Policy')}</h4>
+                  <p>{t('Không hoàn phí trong trường hợp nghỉ ngang.', 'No refund in case of dropping out.')}</p>
                 </div>
               </div>
               <div className="c-item-fancy">
                 <div className="c-icon-wrap"><RefreshCw size={24} /></div>
-                <div>
-                  <h4 style={{fontWeight: '800', marginBottom: '4px'}}>{t('Bảo lưu khóa học', 'Course Deferral')}</h4>
-                  <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Hỗ trợ bảo lưu tối đa lên đến 6 tháng.', 'Support deferral up to 6 months.')}</p>
+                <div className="c-text">
+                  <h4>{t('Bảo lưu khóa học', 'Course Deferral')}</h4>
+                  <p>{t('Hỗ trợ bảo lưu tối đa lên đến 6 tháng.', 'Support deferral up to 6 months.')}</p>
                 </div>
               </div>
             </div>
@@ -191,8 +191,8 @@ const Home: React.FC = () => {
             {activeStepTab === 'meet' ? (
               <div className="steps-grid-fancy">
                 <div className="step-card-premium">
+                  <div className="step-idx">1</div>
                   <div className="step-img-box">
-                    <div className="step-idx">1</div>
                     <div className="ui-mockup ui-phone">
                       <div style={{display: 'flex', justifyContent: 'space-between', opacity: 0.5}}><Search size={10} /><div style={{width: 20, height: 4, background: '#fff', borderRadius: 2}}></div></div>
                       <div className="ui-app-store">
@@ -205,8 +205,8 @@ const Home: React.FC = () => {
                   <p className="step-title">{t('Tải ứng dụng Google Meet về máy.', 'Download Google Meet app.')}</p>
                 </div>
                 <div className="step-card-premium">
+                  <div className="step-idx">2</div>
                   <div className="step-img-box">
-                    <div className="step-idx">2</div>
                     <div className="ui-mockup ui-phone">
                       <div style={{textAlign: 'center', marginTop: 10}}><UserCheck size={20} color="var(--koko-red)" /></div>
                       <div className="ui-login-form">
@@ -219,8 +219,8 @@ const Home: React.FC = () => {
                   <p className="step-title">{t('Đăng nhập tài khoản Email cá nhân.', 'Login to your personal Email.')}</p>
                 </div>
                 <div className="step-card-premium">
+                  <div className="step-idx">3</div>
                   <div className="step-img-box">
-                    <div className="step-idx">3</div>
                     <div className="ui-mockup ui-phone">
                       <div style={{height: 10, background: '#2563eb', margin: '-10px -6px 10px', display: 'flex', alignItems: 'center', padding: '0 10px'}}><div style={{width: 20, height: 4, background: '#fff'}}></div></div>
                       <div className="ui-chat-bubble">{t('Tham gia lớp học:', 'Join class:')} <br/> http://meet.google.com/xyz</div>
@@ -229,8 +229,8 @@ const Home: React.FC = () => {
                   <p className="step-title">{t('Vào nhóm lớp nhấn link nhắc hẹn.', 'Click appointment link in class group.')}</p>
                 </div>
                 <div className="step-card-premium">
+                  <div className="step-idx">4</div>
                   <div className="step-img-box">
-                    <div className="step-idx">4</div>
                     <div className="ui-mockup">
                       <div className="ui-meet-grid">
                         <div className="ui-user"></div>
@@ -238,10 +238,10 @@ const Home: React.FC = () => {
                         <div className="ui-user"></div>
                         <div className="ui-user" style={{background: 'var(--koko-red)'}}></div>
                       </div>
-                      <div style={{height: 12, background: 'rgba(255,255,255,0.1)', borderRadius: 4, display: 'flex', justifyContent: 'center', gap: 10, alignItems: 'center'}}>
-                        <div style={{width: 6, height: 6, borderRadius: '50%', background: 'white'}}></div>
-                        <div style={{width: 6, height: 6, borderRadius: '50%', background: 'white'}}></div>
-                        <div style={{width: 14, height: 6, borderRadius: 4, background: 'var(--koko-red)'}}></div>
+                      <div className="ui-meet-controls">
+                        <div className="dot"></div>
+                        <div className="dot"></div>
+                        <div className="pill"></div>
                       </div>
                     </div>
                   </div>
@@ -251,8 +251,8 @@ const Home: React.FC = () => {
             ) : (
               <div className="steps-grid-fancy">
                 <div className="step-card-premium">
+                  <div className="step-idx">1</div>
                   <div className="step-img-box">
-                    <div className="step-idx">1</div>
                     <div className="ui-mockup ui-phone">
                       <div style={{height: 10, background: '#2563eb', margin: '-10px -6px 10px', display: 'flex', alignItems: 'center', padding: '0 10px'}}><div style={{width: 20, height: 4, background: '#fff'}}></div></div>
                       <div style={{background: 'rgba(255,255,255,0.05)', padding: 4, borderRadius: 4, display: 'flex', alignItems: 'center', gap: 4}}>
@@ -264,8 +264,8 @@ const Home: React.FC = () => {
                   <p className="step-title">{t('Vào phần tin nhắn ghim nhóm lớp.', 'Go to pinned messages in class group.')}</p>
                 </div>
                 <div className="step-card-premium">
+                  <div className="step-idx">2</div>
                   <div className="step-img-box">
-                    <div className="step-idx">2</div>
                     <div className="ui-mockup ui-phone">
                       <div style={{marginTop: 10}} className="ui-chat-bubble">
                         {t('Video buổi học ngày 17/04:', 'Class video April 17:')} <br/>
@@ -276,25 +276,24 @@ const Home: React.FC = () => {
                   <p className="step-title">{t('Chọn tin nhắn có link video.', 'Select message with video link.')}</p>
                 </div>
                 <div className="step-card-premium">
+                  <div className="step-idx">3</div>
                   <div className="step-img-box">
-                    <div className="step-idx">3</div>
                     <div className="ui-mockup">
-                      <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6}}>
-                        <div style={{height: 30, background: 'rgba(255,255,255,0.05)', borderRadius: 4}}></div>
-                        <div style={{height: 30, background: 'rgba(255,255,255,0.05)', borderRadius: 4}}></div>
-                        <div style={{height: 30, background: 'rgba(255,255,255,0.05)', borderRadius: 4}}></div>
-                        <div style={{height: 30, background: 'rgba(255,255,255,0.05)', borderRadius: 4}}></div>
+                      <div className="ui-list-mockup">
+                        <div className="list-item"></div>
+                        <div className="list-item"></div>
+                        <div className="list-item"></div>
                       </div>
                     </div>
                   </div>
                   <p className="step-title">{t('Nhấn vào link dẫn tới danh sách.', 'Click link to view the list.')}</p>
                 </div>
                 <div className="step-card-premium">
+                  <div className="step-idx">4</div>
                   <div className="step-img-box">
-                    <div className="step-idx">4</div>
                     <div className="ui-mockup">
                       <div className="ui-video-player">
-                        <div className="spinner" style={{width: 20, height: 20, border: '2px solid rgba(255,255,255,0.1)', borderTopColor: 'var(--koko-red)', borderRadius: '50%'}}></div>
+                        <div className="spinner"></div>
                         <div className="ui-controls">
                           <Play size={8} fill="white" />
                           <div className="ui-progress"></div>
@@ -315,11 +314,11 @@ const Home: React.FC = () => {
       <section className="section">
         <div className="container">
           <div className="bg-navy-premium reveal">
-            <div className="container support-grid">
+            <div className="support-grid">
               <div className="support-info">
                 <div className="section-tag" style={{background: 'var(--koko-red-light)', color: 'var(--koko-red)'}}>{t('Hỗ trợ 24/7', '24/7 Support')}</div>
-                <h2>{t('Bạn cần giúp đỡ?', 'Need Any Help?')}</h2>
-                <div style={{display: 'flex', gap: '20px', marginTop: '40px'}}>
+                <h2 className="support-title">{t('Bạn cần giúp đỡ?', 'Need Any Help?')}</h2>
+                <div className="support-btns">
                   <a href="#" className="btn-primary">{t('Liên hệ ngay', 'Contact Now')}</a>
                   <a href="#" className="btn-ghost">{t('Nhắn tin Zalo', 'Zalo Chat')}</a>
                 </div>
@@ -327,7 +326,7 @@ const Home: React.FC = () => {
               <div className="phone-card-premium">
                 <span className="phone-label">{t('Hotline chính thức', 'Official Hotline')}</span>
                 <span className="phone-number">010-5885-5868</span>
-                <p style={{fontSize: '13px', opacity: 0.5}}>{t('Hỗ trợ học viên từ 10:00 - 16:00', 'Student support from 10:00 - 16:00')}</p>
+                <p className="phone-note">{t('Hỗ trợ học viên từ 10:00 - 16:00', 'Student support from 10:00 - 16:00')}</p>
               </div>
             </div>
           </div>
