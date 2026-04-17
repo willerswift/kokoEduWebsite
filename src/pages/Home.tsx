@@ -17,17 +17,20 @@ const Home: React.FC = () => {
 
   const handleTabChange = (tab: 'meet' | 'video') => {
     setActiveStepTab(tab);
-    // Tự động cuộn lên đầu phần Hướng dẫn khi đổi tab trên Mobile
-    if (window.innerWidth < 1000 && stepsRef.current) {
-      const headerOffset = 80; // Trừ hao chiều cao của Header
-      const elementPosition = stepsRef.current.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    
+    // Sử dụng setTimeout để đảm bảo nội dung tab mới đã được render trước khi cuộn
+    setTimeout(() => {
+      if (window.innerWidth < 1000 && stepsRef.current) {
+        const headerOffset = 100; // Khoảng cách trừ hao cho Header
+        const elementPosition = stepsRef.current.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 50); // Một khoảng trễ nhỏ cực kỳ quan trọng để trình duyệt cập nhật layout
   };
 
   return (

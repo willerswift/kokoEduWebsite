@@ -12,7 +12,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem('koko-theme');
-    return (saved as Theme) || 'dark';
+    return (saved as Theme) || 'light'; // Đổi mặc định từ dark sang light
   });
 
   useEffect(() => {
