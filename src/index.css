@@ -1,0 +1,85 @@
+@import './styles/vars.css';
+
+/* --- GLOBAL BUTTONS (Bo viền & Hiệu ứng) --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 14px; /* Bo viền mềm mại chuẩn Premium */
+  font-weight: 700;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--primary-blue);
+  color: var(--white);
+  box-shadow: 0 8px 16px rgba(0, 74, 153, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--accent-red);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(227, 27, 35, 0.35);
+  color: var(--white);
+}
+
+.btn-outline {
+  background: var(--white);
+  border: 2.5px solid var(--primary-blue);
+  color: var(--primary-blue);
+}
+
+.btn-outline:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: var(--gray-100);
+  color: var(--navy);
+  border-radius: 14px;
+}
+
+.btn-ghost:hover {
+  background: var(--gray-200);
+  transform: translateY(-2px);
+}
+
+.btn-white {
+  background: var(--white);
+  color: var(--primary-blue);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn-white:hover {
+  background: var(--gray-50);
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: var(--white);
+}
+
+.btn-outline-white:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- MOBILE HELPERS --- */
+@media (max-width: 768px) {
+  .btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    width: 100%; /* Nút bấm full-width trên mobile để dễ bấm */
+  }
+}

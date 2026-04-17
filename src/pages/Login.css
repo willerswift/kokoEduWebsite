@@ -1,0 +1,187 @@
+/* ====================================================
+   KOKOEDU - PREMIUM LOGIN REDESIGN
+   Style: Elegant, Professional, Tech-Focused
+   ==================================================== */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  background: var(--white);
+  overflow: hidden;
+}
+
+/* --- TRÁI: ILLUSTRATION / BRANDING --- */
+.login-visual {
+  flex: 1.2;
+  background-color: var(--navy);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(227, 27, 35, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%),
+    linear-gradient(135deg, #0F172A 0%, #1e293b 100%);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.login-visual::before {
+  content: "";
+  position: absolute;
+  bottom: -10%; right: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(227, 27, 35, 0.1) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 1;
+}
+
+.login-visual::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('../assets/hero.png') center/cover no-repeat;
+  opacity: 0.05;
+  mix-blend-mode: luminosity;
+  pointer-events: none;
+}
+
+.visual-content {
+  position: relative;
+  z-index: 10;
+}
+
+.visual-content h1 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 24px;
+}
+
+.visual-content p {
+  font-size: 18px;
+  opacity: 0.7;
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+/* --- PHẢI: LOGIN FORM --- */
+.login-side {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  background: var(--white);
+}
+
+.login-card-fancy {
+  width: 100%;
+  max-width: 420px;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 40px;
+  transition: var(--transition);
+}
+
+.back-link:hover { color: var(--navy); transform: translateX(-5px); }
+
+.login-intro { margin-bottom: 40px; }
+.login-intro h2 { font-size: 32px; font-weight: 800; color: var(--navy); margin-bottom: 12px; letter-spacing: -1px; }
+.login-intro p { color: var(--text-muted); font-size: 15px; }
+
+.login-form-fancy { display: flex; flex-direction: column; gap: 24px; }
+
+.input-field { display: flex; flex-direction: column; gap: 8px; }
+.input-field label { font-size: 14px; font-weight: 700; color: var(--navy); }
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  transition: var(--transition);
+  background: var(--bg-light);
+}
+
+.input-box:focus-within {
+  border-color: var(--navy);
+  background: var(--white);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.05);
+}
+
+.input-box input {
+  border: none;
+  background: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.input-box svg { color: var(--text-muted); transition: var(--transition); }
+.input-box:focus-within svg { color: var(--navy); }
+
+/* --- BUTTONS & FOOTER --- */
+.btn-login {
+  background: var(--navy);
+  color: var(--white);
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-login:hover { background: var(--koko-red); transform: translateY(-2px); box-shadow: 0 15px 30px rgba(227, 27, 35, 0.2); }
+.btn-login:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.login-options a { color: var(--text-muted); text-decoration: none; font-weight: 700; transition: var(--transition); }
+.login-options a:hover { color: var(--koko-red); }
+
+.error-badge {
+  background: #fff1f2;
+  color: #e11d48;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  border-left: 4px solid #e11d48;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 1000px) {
+  .login-visual { display: none; }
+  .login-side { padding: 40px 24px; }
+}
+
+.spinner { animation: spin 1s linear infinite; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
