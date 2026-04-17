@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { 
-  ArrowRight, Clock, CreditCard, RefreshCw, 
-  MessageCircle, Download, ExternalLink, ShieldCheck,
-  Video, Monitor, Link as LinkIcon, UserCheck, PlayCircle,
+  Clock, CreditCard, RefreshCw, ShieldCheck,
+  Video, UserCheck, PlayCircle,
   Play, Volume2, Search, Pin
 } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
