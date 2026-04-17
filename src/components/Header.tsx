@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, X, Globe, User } from 'lucide-react';
+import { Menu, X, Globe, User, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { useTheme } from '../context/ThemeContext';
 import './Header.css';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { lang, setLang, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const toggleLang = () => {
     setLang(lang === 'VN' ? 'EN' : 'VN');
@@ -26,11 +28,27 @@ const Header: React.FC = () => {
             <li><Link to="/about" onClick={() => setIsMenuOpen(false)}>{t('Về chúng tôi', 'About Us')}</Link></li>
             <li><Link to="/courses" onClick={() => setIsMenuOpen(false)}>{t('Khóa học', 'Courses')}</Link></li>
             <li><Link to="/news" onClick={() => setIsMenuOpen(false)}>{t('Tin tức', 'News')}</Link></li>
+            {/* Mobile-only actions */}
+            <li className="mobile-only-action">
+              <button className="mobile-action-btn" onClick={toggleLang}>
+                <Globe size={20} /> {lang === 'VN' ? 'English' : 'Tiếng Việt'}
+              </button>
+            </li>
+            <li className="mobile-only-action">
+              <button className="mobile-action-btn" onClick={toggleTheme}>
+                {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                {theme === 'dark' ? t('Giao diện sáng', 'Light Mode') : t('Giao diện tối', 'Dark Mode')}
+              </button>
+            </li>
           </ul>
         </nav>
 
         <div className="header-actions">
-          <button className="lang-toggle" onClick={toggleLang}>
+          <button className="theme-toggle hide-mobile" onClick={toggleTheme} title="Toggle Theme">
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          <button className="lang-toggle hide-mobile" onClick={toggleLang}>
             <Globe size={18} />
             <span style={{color: 'var(--koko-red)'}}>{lang}</span>
           </button>

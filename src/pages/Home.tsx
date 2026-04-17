@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Clock, CreditCard, RefreshCw, ShieldCheck,
   Video, UserCheck, PlayCircle,
@@ -13,6 +13,19 @@ const Home: React.FC = () => {
   useScrollReveal();
   const { t } = useLanguage();
   const [activeStepTab, setActiveStepTab] = useState<'meet' | 'video'>('meet');
+  const stepsRef = useRef<HTMLDivElement>(null);
+
+  const handleTabChange = (tab: 'meet' | 'video') => {
+    setActiveStepTab(tab);
+    if (window.innerWidth < 1000 && stepsRef.current) {
+      const offset = 100;
+      const elementPosition = stepsRef.current.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className="home-page">
@@ -20,7 +33,7 @@ const Home: React.FC = () => {
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-content reveal">
-            <div className="section-tag">Koko Education Network</div>
+            <div className="section-tag">{t('Mạng lưới giáo dục Koko', 'Koko Education Network')}</div>
             <h1 className="hero-title">
               {t('Chinh phục', 'Conquer')} <span>{t('Hàn Quốc', 'Korea')}</span> <br/>
               {t('Khởi đầu tương lai', 'Start Your Future')}
@@ -62,9 +75,9 @@ const Home: React.FC = () => {
 
       {/* 3. ABOUT US PROMO */}
       <section id="about" className="section reveal">
-        <div className="container" style={{background: 'rgba(255,255,255,0.02)', padding: '80px', borderRadius: '40px', border: '1px solid rgba(255,255,255,0.05)'}}>
+        <div className="container" style={{background: 'var(--koko-red-light)', padding: '80px', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)'}}>
           <div className="rules-grid">
-            <div style={{paddingRight: '40px'}}>
+            <div style={{paddingRight: '40px'}} className="about-text-mobile">
               <div className="section-tag">{t('Về KokoEdu', 'About KokoEdu')}</div>
               <h2 style={{fontSize: '40px', fontWeight: '800', marginBottom: '24px'}}>{t('Hơn cả một Trung tâm,', 'More Than a Center,')} <br/> {t('Chúng tôi là', 'We are')} <span style={{color: 'var(--koko-red)'}}>{t('Gia đình', 'Family')}</span></h2>
               <p style={{color: 'var(--text-muted)', fontSize: '18px', lineHeight: '1.8', marginBottom: '32px'}}>
@@ -75,16 +88,16 @@ const Home: React.FC = () => {
               </p>
               <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px'}}>
                 <div>
-                  <h4 style={{color: '#fff', marginBottom: '8px', fontWeight: '800'}}>{t('Sứ mệnh', 'Mission')}</h4>
+                  <h4 style={{color: 'var(--text-main)', marginBottom: '8px', fontWeight: '800'}}>{t('Sứ mệnh', 'Mission')}</h4>
                   <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Xây dựng cầu nối vững chắc giúp học sinh Việt Nam tiếp cận tinh hoa giáo dục Hàn Quốc.', 'Building a solid bridge to help Vietnamese students access the essence of Korean education.')}</p>
                 </div>
                 <div>
-                  <h4 style={{color: '#fff', marginBottom: '8px', fontWeight: '800'}}>{t('Tầm nhìn', 'Vision')}</h4>
+                  <h4 style={{color: 'var(--text-main)', marginBottom: '8px', fontWeight: '800'}}>{t('Tầm nhìn', 'Vision')}</h4>
                   <p style={{fontSize: '14px', color: 'var(--text-muted)'}}>{t('Trở thành biểu tượng của sự uy tín và tận tâm trong lĩnh vực du học quốc tế.', 'Becoming a symbol of prestige and dedication in the field of international study abroad.')}</p>
                 </div>
               </div>
             </div>
-            <div className="fancy-card" style={{background: 'var(--navy)', border: 'none'}}>
+            <div className="fancy-card" style={{border: 'none'}}>
               <h3 style={{fontSize: '24px', fontWeight: '800', marginBottom: '24px', color: 'var(--koko-red)'}}>{t('Vì sao chọn Koko?', 'Why Choose Koko?')}</h3>
               <ul className="rules-list">
                 <li>{t('Lộ trình cá nhân hóa cho từng trình độ.', 'Personalized learning paths for each level.')}</li>
@@ -146,7 +159,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* 5. GUIDE SECTION */}
-      <section className="section bg-light" style={{borderRadius: '40px', margin: '0 24px'}}>
+      <section className="section" ref={stepsRef}>
         <div className="container">
           <div className="section-head reveal">
             <div className="section-tag">{t('Hướng dẫn học tập', 'Study Guide')}</div>
@@ -158,7 +171,7 @@ const Home: React.FC = () => {
               className={`tab-btn ${activeStepTab === 'meet' ? 'active' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
-                setActiveStepTab('meet');
+                handleTabChange('meet');
               }}
             >
               {t('Học qua Google Meet', 'Learn via Google Meet')}
@@ -167,7 +180,7 @@ const Home: React.FC = () => {
               className={`tab-btn ${activeStepTab === 'video' ? 'active' : ''}`}
               onClick={(e) => {
                 e.preventDefault();
-                setActiveStepTab('video');
+                handleTabChange('video');
               }}
             >
               {t('Cách xem lại video', 'How to rewatch video')}
@@ -304,10 +317,10 @@ const Home: React.FC = () => {
           <div className="bg-navy-premium reveal">
             <div className="container support-grid">
               <div className="support-info">
-                <div className="section-tag" style={{background: 'rgba(255,255,255,0.05)', color: '#fff'}}>{t('Hỗ trợ 24/7', '24/7 Support')}</div>
+                <div className="section-tag" style={{background: 'var(--koko-red-light)', color: 'var(--koko-red)'}}>{t('Hỗ trợ 24/7', '24/7 Support')}</div>
                 <h2>{t('Bạn cần giúp đỡ?', 'Need Any Help?')}</h2>
                 <div style={{display: 'flex', gap: '20px', marginTop: '40px'}}>
-                  <a href="#" className="btn-primary" style={{background: 'var(--koko-red)', color: '#fff', border: 'none'}}>{t('Liên hệ ngay', 'Contact Now')}</a>
+                  <a href="#" className="btn-primary">{t('Liên hệ ngay', 'Contact Now')}</a>
                   <a href="#" className="btn-ghost">{t('Nhắn tin Zalo', 'Zalo Chat')}</a>
                 </div>
               </div>
