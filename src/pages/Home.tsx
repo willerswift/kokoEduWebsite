@@ -17,11 +17,14 @@ const Home: React.FC = () => {
 
   const handleTabChange = (tab: 'meet' | 'video') => {
     setActiveStepTab(tab);
+    // Tự động cuộn lên đầu phần Hướng dẫn khi đổi tab trên Mobile
     if (window.innerWidth < 1000 && stepsRef.current) {
-      const offset = 100;
-      const elementPosition = stepsRef.current.getBoundingClientRect().top + window.pageYOffset;
+      const headerOffset = 80; // Trừ hao chiều cao của Header
+      const elementPosition = stepsRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
       window.scrollTo({
-        top: elementPosition - offset,
+        top: offsetPosition,
         behavior: 'smooth'
       });
     }

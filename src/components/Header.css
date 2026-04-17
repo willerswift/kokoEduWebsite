@@ -50,25 +50,38 @@
 
 .nav-list a:hover { opacity: 1; color: var(--koko-red); }
 
+.mobile-actions-wrapper {
+  display: none; /* Ẩn hoàn toàn trên Máy tính */
+}
+
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
 .theme-toggle, .lang-toggle {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 16px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: var(--border);
   color: var(--text-main);
-  font-weight: 700;
-  font-size: 14px;
   border: 1px solid var(--border);
   cursor: pointer;
   transition: 0.3s;
+  padding: 0;
+}
+
+.lang-toggle { width: auto; padding: 0 12px; }
+.lang-text { color: var(--koko-red); font-weight: 800; font-size: 13px; }
+
+.theme-toggle:hover, .lang-toggle:hover {
+  background: var(--koko-red-light);
+  border-color: var(--koko-red);
 }
 
 .login-btn {
@@ -85,13 +98,28 @@
   transition: 0.3s;
 }
 
-.menu-toggle { display: none; color: var(--text-main); }
+.login-btn:hover { 
+  background: var(--koko-red); 
+  color: #fff; 
+  transform: translateY(-2px); 
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+}
 
 @media (max-width: 900px) {
   .header { height: 70px; }
-  .nav-list, .lang-toggle.hide-mobile, .theme-toggle.hide-mobile { display: none; }
-  .menu-toggle { display: block; background: none; border: none; cursor: pointer; }
+  .nav-list { display: none; }
+  .menu-toggle { display: block; }
   
+  .hide-mobile { display: none !important; }
+
+  /* Mobile Nav Drawer */
   .nav.nav-open {
     display: block;
     position: fixed;
@@ -102,6 +130,7 @@
     background: var(--bg-deep);
     z-index: 999;
     padding: 30px 24px;
+    overflow-y: auto;
   }
 
   .nav.nav-open .nav-list {
@@ -115,24 +144,39 @@
     font-size: 18px;
     padding: 15px 0;
     border-bottom: 1px solid var(--border);
+    color: var(--text-main);
+    opacity: 1;
+    text-align: center;
   }
 
-  .mobile-only-action { display: block; margin-top: 20px; }
+  .mobile-actions-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
   .mobile-action-btn {
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     background: var(--border);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 16px;
     color: var(--text-main);
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    cursor: pointer;
+    font-family: inherit;
   }
 
-  .hide-mobile { display: none; }
-  .login-btn { padding: 10px; border-radius: 50%; width: 40px; height: 40px; justify-content: center; }
+  .login-btn { 
+    width: 40px; 
+    height: 40px; 
+    padding: 0; 
+    border-radius: 50%; 
+    justify-content: center; 
+  }
 }
