@@ -34,18 +34,18 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: '22'
           cache: 'npm'
-      - name: Install dependencies
-        run: npm install
       - name: Build
-        run: npm run build
+        run: |
+          npm install
+          npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Chỉ upload thư mục dist sau khi đã build xong
           path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment

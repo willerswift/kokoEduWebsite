@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Sử dụng đường dẫn tương đối để tránh lỗi 404 trên GitHub Pages
+  base: '/kokoEduWebsite/', // Bắt buộc phải là tên repository để các file JS/CSS không bị 404
 })
