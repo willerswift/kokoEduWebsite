@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { 
   Clock, CreditCard, RefreshCw, ShieldCheck,
   Video, UserCheck, PlayCircle,
-  Play, Volume2, Search, Pin, ChevronRight
+  Play, Volume2, Search, Pin
 } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useLanguage } from '../context/LanguageContext';
