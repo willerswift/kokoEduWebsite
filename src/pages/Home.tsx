@@ -153,16 +153,22 @@ const Home: React.FC = () => {
             <h2 className="title">{t('Chuẩn bị & Tham gia', 'Preparation & Joining')}</h2>
           </div>
 
-          <div className="step-tabs-fancy reveal">
+          <div className="step-tabs-fancy">
             <button 
               className={`tab-btn ${activeStepTab === 'meet' ? 'active' : ''}`}
-              onClick={() => setActiveStepTab('meet')}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveStepTab('meet');
+              }}
             >
               {t('Học qua Google Meet', 'Learn via Google Meet')}
             </button>
             <button 
               className={`tab-btn ${activeStepTab === 'video' ? 'active' : ''}`}
-              onClick={() => setActiveStepTab('video')}
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveStepTab('video');
+              }}
             >
               {t('Cách xem lại video', 'How to rewatch video')}
             </button>

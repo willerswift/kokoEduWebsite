@@ -89,6 +89,35 @@
 .menu-toggle { display: none; color: var(--white); }
 
 @media (max-width: 900px) {
+  .header { height: 70px; }
   .nav-list, .lang-toggle { display: none; }
-  .menu-toggle { display: block; background: none; border: none; }
+  .menu-toggle { display: block; background: none; border: none; cursor: pointer; }
+
+  /* Mobile Nav Open State */
+  .nav.nav-open {
+    display: block;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--navy-deep);
+    z-index: 999;
+    padding: 40px 24px;
+  }
+
+  .nav.nav-open .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .nav.nav-open .nav-list a {
+    font-size: 24px;
+    opacity: 1;
+  }
+
+  .hide-mobile { display: none; }
+  .login-btn { padding: 10px; border-radius: 50%; }
 }
